@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :posts do
     resource :favorites, only: [:create, :destroy]
   end
+  get '/post/hashtag/:name' => 'posts#hashtag'
+  get '/post/hashtag' => 'posts#hashtag'
 end

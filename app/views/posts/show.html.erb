@@ -1,8 +1,8 @@
-<section class="hero is-success">
-    <div class="hero-body">
+<section class="hero is-warning">
+    <div class="hero-header">
       <div class="container">
-        <h1 class="title">
-          キャンプ詳細
+        <h1 class="title is-4">
+          投稿詳細
         </h1>
       </div>
     </div>
@@ -18,6 +18,22 @@
                 <%= attachment_image_tag @post, :image %>
               </figure>
             </div>
+            
+            <br>
+            <div id="map" style="width: 600px; height: 250px;"></div>
+        
+              <script type="text/javascript">
+                handler = Gmaps.build('Google');
+                handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+                  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+                  handler.bounds.extendWith(markers);
+                  handler.fitMapToBounds();
+                  handler.getMap().setZoom(12);
+                });
+
+  
+              </script>
+
             <div class="card-content">
               <div class="media">
                 <div class="media-content">
@@ -49,9 +65,12 @@
                   <%= link_to "編集画面へ", edit_post_path(@post), class: "button is-success" %>
                 <% end %>
               </div>
+              <%= render_with_hashtags(@post.hashbody) %>
             </div>
           </div>
         </div>
+
+        
   
         <div class="column is-4">
           <article class="panel is-link">
@@ -74,3 +93,4 @@
       </div>
     </div>
   </section>
+
