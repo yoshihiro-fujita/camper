@@ -6,6 +6,9 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.text :body
       t.string :image_id
       t.text :hashbody
+      t.string :address
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end
