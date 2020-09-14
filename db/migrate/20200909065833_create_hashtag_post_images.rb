@@ -1,7 +1,7 @@
 class CreateHashtagPostImages < ActiveRecord::Migration[5.2]
   def change
-    create_table :hashtag_post_images do |t|
-      t.references :post_image, foreign_key: true
+    create_table :hashtag_posts do |t|
+      t.references :post_id, foreign_key: true
       t.references :hashtag, foreign_key: true
 
       t.timestamps
