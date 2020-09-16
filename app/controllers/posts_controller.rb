@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, only: [:index,:show,:new,:create,:edit,:destory,:hashtag]
   def index
     @posts = Post.all.order(id: "DESC")
     @posts = Post.all.page(params[:page]).per(12)
