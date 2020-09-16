@@ -1,8 +1,14 @@
 <nav class="navbar is-success">
     <div class="navbar-brand">
+      <% if user_signed_in? %>
+      <%= link_to posts_url, class: "navbar-item" do %>
+      <h1 class="title is-4" style="font-family: cursive;">Outdoors</h1>
+        <% end %>
+      <% else %>
       <%= link_to root_path, class: "navbar-item" do %>
         <h1 class="title is-4" style="font-family: cursive;">Outdoors</h1>
-      <% end %>
+        <% end %>
+        <% end %>
       <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
         <span></span>
         <span></span>
@@ -33,6 +39,7 @@
               <p class="control">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-warning is-light" %>
               </p>
+        
             </div>
           </div>
         </div>
