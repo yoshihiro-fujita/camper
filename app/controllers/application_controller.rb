@@ -13,6 +13,18 @@ class ApplicationController < ActionController::Base
         new_user_session_path
       end
 
+      def forbid_login_user
+        if current_user != nil
+       redirect_to posts_path
+        end
+      end
+
+      def forbid_logout_user
+        if current_user = nil
+        redirect_to root_path
+        end
+       end
+ 
       private
     def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
